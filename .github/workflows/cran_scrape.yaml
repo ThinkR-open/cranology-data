@@ -17,7 +17,6 @@ jobs:
         run: Rscript -e 'install.packages("remotes")'
       - name: Instal {cranology}
         run: Rscript -e 'install.packages("cranology", repos = "https://thinkr-open.r-universe.dev")'
-'
       - name: Scrape the data
         run: Rscript script.R
       - name: Commit results
