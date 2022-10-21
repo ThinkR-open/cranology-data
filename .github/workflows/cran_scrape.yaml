@@ -17,6 +17,10 @@ jobs:
           Rscript -e 'install.packages("cranology", repos = c("https://thinkr-open.r-universe.dev", getOption("repos")), dependencies = TRUE)'
           Rscript script.R
 
+      - name: Trust directory
+        # cf: https://github.com/actions/checkout/issues/760
+        run: git config --global --add safe.directory /__w/cranology-data/cranology-data
+
       - name: Commit results
         run: |
           git add -A
