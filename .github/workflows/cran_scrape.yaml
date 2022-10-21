@@ -14,8 +14,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@v1
       - name: Scrape the data
-        run: Rscript -e 'install.packages("cranology", repos = "https://thinkr-open.r-universe.dev")'
-        run: Rscript script.R
+        run: |
+        Rscript -e 'install.packages("cranology", repos = "https://thinkr-open.r-universe.dev")'
+        Rscript script.R
       - name: Commit results
         run: |
           git add -A
