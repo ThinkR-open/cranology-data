@@ -4,19 +4,19 @@ on:
   push:
     branches: main
 
-name: Update CRAN packages number
-
 jobs:
   render:
     name: Update CRAN packages number
     runs-on: ubuntu-latest
+    container: rocker/verse:4.2.0
     steps:
       - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
+
       - name: Scrape the data
         run: |
           Rscript -e 'install.packages("cranology", repos = c("https://thinkr-open.r-universe.dev", getOption("repos")), dependencies = TRUE)'
           Rscript script.R
+
       - name: Commit results
         run: |
           git add -A
